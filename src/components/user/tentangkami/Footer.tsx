@@ -10,17 +10,18 @@ const Footer: React.FC = () => {
         {/* Logo and Information Section */}
         <div className="mb-8">
           <div className="flex items-center mb-8">
-            <div className="mr-2">
-              <Image 
-                src="/image/logomasjid2.png" 
-                alt="Masjid Raya Al-Muhajjirin Logo" 
-                width={60} 
-                height={60} 
-              />
-            </div>
+            <div className="mr-4 w-[130px] h-[130px] flex items-center justify-center overflow-hidden">
+          <Image 
+            src="/image/logomasjid2.png" 
+            alt="Masjid Raya Al-Muhajjirin Logo" 
+            width={300} // Bebas diperbesar
+            height={300} 
+            className="object-contain"
+          />
+        </div>
             <div>
-              <p className="text-sm text-gray-600">Masjid Raya</p>
-              <h2 className="text-2xl font-bold text-blue-900">Al-Imam</h2>
+              <p className="text-sm font-bold text-gray-600">Masjid </p>
+              <h2 className="text-2xl font-bold text-blue-900">Al-Muhajirin</h2>
             </div>
           </div>
         </div>
@@ -39,7 +40,7 @@ const Footer: React.FC = () => {
             <div>
               <h3 className="font-bold text-gray-800">Alamat Lengkap</h3>
               <p className="text-sm text-gray-600 mt-2">
-                Jl. Cimincrang No. 14, Cimincrang, Kec. Gedebage, Kota Bandung, Jawa Barat 40292
+                Jl. Perum Joyo Grand, RW.08, Merjosari, Kec. Lowokwaru, Kota Malang, Jawa Timur 65144
               </p>
             </div>
           </div>

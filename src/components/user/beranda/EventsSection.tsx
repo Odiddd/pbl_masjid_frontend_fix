@@ -58,8 +58,8 @@ const EventsSection = () => {
   };
 
   return (
-    <section className="py-12 px-6 bg-white">
-      <h2 className="text-2xl font-bold mb-6 text-black">Berita Acara</h2>
+    <section className="py-12 px-6 bg-gradient-to-t from-slate-800 via-slate-900 to-slate-800">
+      <h2 className="text-2xl font-bold font-serif mb-6 bg-gradient-to-r from-amber-400 to-amber-500 text-transparent bg-clip-text">Berita Acara</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
         {eventsData.map((event, index) => (

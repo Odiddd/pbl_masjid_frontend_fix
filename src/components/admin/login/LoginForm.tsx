@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { MailIcon, LockIcon, EyeIcon, EyeOffIcon } from 'lucide-react';
-import GoogleButton from '@/components/admin/login/GoogleButton';
+// import GoogleButton from '@/components/admin/login/GoogleButton';
 import Logo from '@/components/admin/login/Logo';
 import { login } from '@/services/auth';
 
@@ -13,18 +13,22 @@ const LoginForm: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const [isLoading, setIsLoading] = useState(false); // State loading
 
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
+    setIsLoading(true);  // mulai loading
 
     try {
       await login(email, password);
       router.push('/admin/dashboard');
     } catch (error: any) {
       setErrorMsg(error.message);
+    } finally {
+      setIsLoading(false); // selesai loading, baik berhasil atau gagal
     }
   };
 
@@ -35,14 +39,14 @@ const LoginForm: React.FC = () => {
       </div>
 
       <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 shadow-2xl">
-        <GoogleButton />
+        {/* <GoogleButton /> */}
 
         <div className="relative my-6">
           <div className="absolute inset-0 flex items-center">
             <div className="w-full border-t border-slate-600"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-4 bg-slate-800/50 text-slate-400">Or sign in with email</span>
+            <span className="px-4  text-slate-400">Masukkan akun anda disini</span>
           </div>
         </div>
 
@@ -114,9 +118,38 @@ const LoginForm: React.FC = () => {
 
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 transform hover:scale-105"
+            disabled={isLoading}
+            className={`w-full flex items-center justify-center bg-gradient-to-r from-yellow-600 to-amber-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 transform ${
+              isLoading ? 'opacity-70 cursor-not-allowed' : 'hover:scale-105'
+            }`}
           >
-            Sign In
+            {isLoading ? (
+              <>
+                <svg
+                  className="animate-spin h-5 w-5 mr-2 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                  />
+                </svg>
+                
+              </>
+            ) : (
+              'Sign In'
+            )}
           </button>
 
           <div className="text-center">

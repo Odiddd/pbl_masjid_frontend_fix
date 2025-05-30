@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const MapSection: React.FC = () => {
   return (
-    <div className="w-full bg-gray-900 text-white p-6 rounded-lg">
+    <div className="w-full bg-gradient-to-b from-slate-800 via-slate-900 to-slate-800 text-white p-6 rounded-lg">
       <div className="flex flex-col items-center mb-4">
         <h1 className="text-2xl font-bold text-yellow-500">Lokasi Masjid Al-Muhajirin</h1>
         <p className="text-sm text-gray-300"></p>

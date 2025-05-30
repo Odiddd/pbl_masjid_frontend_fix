@@ -33,7 +33,7 @@ const FeatureSection = () => {
   );
 
   return (
-    <section className="bg-gray-900 text-white py-12 overflow-hidden">
+    <section className="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800 text-white py-12 overflow-hidden">
       <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
         {/* Tempat Ibadah */}
         <div 

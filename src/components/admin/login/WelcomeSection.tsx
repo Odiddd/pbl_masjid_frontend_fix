@@ -6,14 +6,15 @@ const WelcomeSection: React.FC = () => {
     <div className="max-w-lg text-center space-y-8">
       {/* Main Heading */}
       <div className="space-y-4">
-        <h2 className="text-lg text-slate-400 font-medium">
-          Sign in to your account
-        </h2>
-        <h1 className="text-5xl font-bold text-white leading-tight">
-          Welcome Back!
+        <h1 className="text-5xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-500">
+                    ٱلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ ٱللَّٰهِ وَبَرَكَاتُهُ
         </h1>
-        <p className="text-slate-400 text-lg leading-relaxed max-w-md mx-auto">
-          Please sign in to your account by completing the necessary fields below
+        <p className="text-indigo-800 font-serif font-semibold text-lg leading-relaxed max-w-md mx-auto ">
+          Selamat datang, Administrator! 
+        </p>
+        <p className="text-teal-800 font-serif font-semibold text-lg leading-relaxed max-w-md mx-auto ">
+          Silakan login menggunakan akun Anda untuk mengakses fitur-fitur pengelolaan
+           website dan melakukan konfigurasi yang diperlukan.
         </p>
       </div>
 
@@ -38,7 +39,7 @@ const WelcomeSection: React.FC = () => {
       </div>
 
       {/* Features List */}
-      <div className="space-y-4 text-left max-w-sm mx-auto">
+      {/* <div className="space-y-4 text-left max-w-sm mx-auto">
         {[
           { icon: '🚀', text: 'Fast and secure authentication' },
           { icon: '🎨', text: 'Beautiful and modern interface' },
@@ -49,12 +50,12 @@ const WelcomeSection: React.FC = () => {
             <span className="text-sm">{feature.text}</span>
           </div>
         ))}
-      </div>
+      </div> */}
 
       {/* Bottom Decorative Line */}
-      <div className="flex justify-center">
+      {/* <div className="flex justify-center">
         <div className="w-32 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -1,14 +1,12 @@
-// src/components/ReservationCTA.tsx
-
-'use client'; // Tambahkan directive ini untuk membuat Client Component
+'use client';
 
 import React from 'react';
-import Image from 'next/image';
+import { MessageCircle, Check } from 'lucide-react';
 
-const ReservationCTA: React.FC = () => {
+const WhatsAppCTASection = () => {
   // Konfigurasi WhatsApp
   const whatsappConfig = {
-    phoneNumber: "6288292105178", // Ganti dengan nomor WhatsApp tujuan (format internasional tanpa +)
+    phoneNumber: "6288292105178",
     message: `Assalamu'alaikum, saya tertarik untuk melakukan reservasi Masjid.
 
 Mohon informasi lebih lanjut terkait:
@@ -25,70 +23,85 @@ Terima kasih.`
   // Fungsi untuk membuka WhatsApp
   const openWhatsApp = () => {
     const encodedMessage = encodeURIComponent(whatsappConfig.message);
-    
-    // URL untuk WhatsApp Web/Desktop
     const whatsappWebUrl = `https://wa.me/${whatsappConfig.phoneNumber}?text=${encodedMessage}`;
-    
-    // URL untuk WhatsApp Mobile App
     const whatsappAppUrl = `whatsapp://send?phone=${whatsappConfig.phoneNumber}&text=${encodedMessage}`;
     
-    // Deteksi device dan buka WhatsApp yang sesuai
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
     if (isMobile) {
-      // Coba buka app WhatsApp dulu, jika gagal fallback ke WhatsApp Web
       window.location.href = whatsappAppUrl;
-      
-      // Fallback ke WhatsApp Web setelah 2 detik jika app tidak terbuka
       setTimeout(() => {
         window.open(whatsappWebUrl, '_blank');
       }, 2000);
     } else {
-      // Desktop: langsung buka WhatsApp Web
       window.open(whatsappWebUrl, '_blank');
     }
   };
 
   return (
-    <div className="py-16 bg-black">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center justify-between">
-          {/* Left side with icon and heading */}
-          <div className="flex items-center mb-8 md:mb-0">
-            <div className="mr-4 text-amber-400">
-              <Image
-                src="/image/logomasjid.png"
-                alt="Reservation Icon"
-                width={60}
-                height={60}
-              />
+    <div className="w-full bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 rounded-2xl p-6 sm:p-8 lg:p-12 border border-slate-700/50 shadow-2xl">
+      <div className="max-w-6xl mx-auto">
+        {/* Main Content - Horizontal Layout */}
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          
+          {/* Left Side - WhatsApp Icon and Text */}
+          <div className="text-center lg:text-left">
+            <div className="flex justify-center lg:justify-start mb-6">
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-green-500 rounded-full shadow-lg">
+                <MessageCircle className="w-10 h-10 text-white" />
+              </div>
             </div>
-            <div>
-              <h2 className="text-3xl font-bold text-white">RESERVASI</h2>
+            
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
+              Anda berminat untuk reservasi?
+            </h3>
+            
+            <p className="text-slate-400 text-base sm:text-lg mb-6 lg:mb-0">
+              Hubungi kami melalui WhatsApp untuk informasi lebih lanjut
+            </p>
+          </div>
+
+          {/* Right Side - CTA Button and Info */}
+          <div className="space-y-6">
+            {/* CTA Button */}
+            <button
+              onClick={openWhatsApp}
+              className="group w-full bg-gradient-to-r from-amber-400 to-yellow-300 hover:from-amber-500 hover:to-yellow-400 text-slate-900 font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg relative overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12"></div>
+              <div className="relative flex items-center justify-center space-x-3">
+                <MessageCircle className="w-5 h-5" />
+                <span className="text-lg">Klik disini untuk mengajukan</span>
+              </div>
+            </button>
+
+            {/* Additional Info */}
+            <div className="p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+              <p className="text-sm text-slate-400 text-center flex items-center justify-center space-x-2">
+                <MessageCircle className="w-4 h-4" />
+                <span>Respon cepat melalui WhatsApp</span>
+              </p>
             </div>
           </div>
+        </div>
+
+        {/* Bottom Stats Row - Full Width */}
+        <div className="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mt-8 lg:mt-12">
+          <div className="text-center p-4 sm:p-6 bg-slate-800/50 rounded-lg border border-slate-700/30">
+            <div className="text-2xl sm:text-3xl font-bold text-amber-400 mb-2">24/7</div>
+            <div className="text-sm sm:text-base text-slate-400">Layanan</div>
+          </div>
           
-          {/* Right side with text and button */}
-          <div className="md:w-2/3">
-            <div className="flex flex-col md:flex-row items-center justify-between">
-              <div className="mb-6 md:mb-0 md:mr-8 md:w-2/3">
-                <p className="text-white">
-                  Kami menyediakan layanan reservasi Masjid untuk keperluan bersama dan tidak merugikan pihak manapun seperti acara akad, pengajian, buka bersama, dan lain lain yang masih berkaitan dengan kegiatan keagamaan.
-                </p>
-              </div>
-              
-              <div className="md:w-1/3 text-center md:text-right">
-                <div className="mb-4 text-center">
-                  <p className="text-white">Anda berminat untuk reservasi?</p>
-                </div>
-                <button
-                  onClick={openWhatsApp}
-                  className="inline-block bg-amber-400 hover:bg-amber-500 text-black font-medium py-3 px-6 rounded-full transition duration-300 cursor-pointer"
-                >
-                  Klik disini untuk mengajukan
-                </button>
-              </div>
+          <div className="text-center p-4 sm:p-6 bg-slate-800/50 rounded-lg border border-slate-700/30">
+            <div className="text-2xl sm:text-3xl font-bold text-amber-400 mb-2 flex justify-center">
+              <Check className="w-7 h-7 sm:w-8 sm:h-8" />
             </div>
+            <div className="text-sm sm:text-base text-slate-400">Terpercaya</div>
+          </div>
+          
+          <div className="text-center p-4 sm:p-6 bg-slate-800/50 rounded-lg border border-slate-700/30">
+            <div className="text-2xl sm:text-3xl font-bold text-amber-400 mb-2">Free</div>
+            <div className="text-sm sm:text-base text-slate-400">Konsultasi</div>
           </div>
         </div>
       </div>
@@ -96,4 +109,4 @@ Terima kasih.`
   );
 };
 
-export default ReservationCTA;
+export default WhatsAppCTASection;

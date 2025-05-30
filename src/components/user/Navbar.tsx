@@ -27,10 +27,10 @@ const Navbar = () => {
         </div>
 
         {/* Menu di tengah */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 flex space-x-10 text-sm font-semibold">
+        <div className="absolute left-1/2 transform -translate-x-1/2 flex space-x-10 bg-gradient-to-r from-amber-400 to-amber-500 text-transparent bg-clip-text font-semibold">
           {navItems.map((item) => (
             <Link key={item.name} href={item.href}>
-              <div className="cursor-pointer text-yellow-400 hover:text-orange-500 active:text-yellow-400 transition-colors duration-200">
+              <div className="cursor-pointer text-grey-700 hover:text-orange-500 active:text-yellow-400 transition-colors duration-200">
                 {item.name}
               </div>
             </Link>

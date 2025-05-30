@@ -5,6 +5,7 @@ import Footer from "@/components/user/tentangkami/Footer";
 // import Navbar from "@/components/tentangkami/Navbar";
 import JadwalAdzan from "@/components/user/tentangkami/JadwalAdzan";
 import QRInfaqSection from "@/components/user/tentangkami/QRInfaqSection";
+import EventSection from "@/components/user/tentangkami/EventSection";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <HeroSection />
       <DonationSection/>
       <QRInfaqSection/>
+      <EventSection />
       <JadwalAdzan/>
       <Footer />
       {/* <Navbar /> */}
